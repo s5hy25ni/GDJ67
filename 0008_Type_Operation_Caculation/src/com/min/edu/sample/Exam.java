@@ -42,4 +42,12 @@ public class Exam {
 		System.out.println('\u007b');
 		System.out.println(cha);
 	}
+	
+	public void uni() {
+		
+		System.out.println(Integer.toHexString('a'));
+		System.out.println(Integer.toHexString('A'));
+
+
+	}
 }

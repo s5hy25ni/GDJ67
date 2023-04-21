@@ -6,7 +6,8 @@ public class ExamMain {
 		Exam ex = new Exam();
 //		ex.charnumToNum();
 //		ex.charToChar();
-		ex.charIndex();
+//		ex.charIndex();
+		ex.uni();
 	}
 
 }
