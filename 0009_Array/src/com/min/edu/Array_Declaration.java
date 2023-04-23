@@ -48,6 +48,8 @@ public class Array_Declaration {
 		
 		System.out.println(arr3.length);
 		
+		float a = 1.0f + 2.0f;
+		
 //		arr3[3] = 100; // runtime 오류 
 //		System.out.println(arr2[4]);
 	}

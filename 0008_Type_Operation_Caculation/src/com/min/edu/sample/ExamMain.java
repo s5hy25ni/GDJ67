@@ -7,7 +7,14 @@ public class ExamMain {
 //		ex.charnumToNum();
 //		ex.charToChar();
 //		ex.charIndex();
-		ex.uni();
+//		ex.uni();
+		
+		double num = 0.1;
+		double result = 0.0;
+		for(int i=0; i<10; i++) {
+			result += num;
+		}
+		System.out.println(result);
 	}
 
 }

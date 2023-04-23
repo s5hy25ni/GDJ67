@@ -13,8 +13,12 @@ public class ArithMain {
 //		Operation_pre op = new Operation_pre();
 //		op.Operation();
 		
-		Logical_Operation lo = new Logical_Operation();
-		lo.shortcircuit();
+//		Logical_Operation lo = new Logical_Operation();
+//		lo.shortcircuit();
+		
+		char c1 = 'A';
+		System.out.println(c1+1);
+		System.out.println((char)(c1+1));
 	}
 
 }
