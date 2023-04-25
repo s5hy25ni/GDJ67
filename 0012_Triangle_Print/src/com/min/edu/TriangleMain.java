@@ -11,7 +11,7 @@ public class TriangleMain {
 //		tri.triangle_Three();
 //		System.out.println();
 //		tri.triangle_Four();
-		tri.diamond_One();
+		tri.diamond_Top();
+		tri.diamond_Bot();
 	}
-
 }

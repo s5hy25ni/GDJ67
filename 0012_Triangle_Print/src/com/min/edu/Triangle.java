@@ -41,7 +41,7 @@ public class Triangle {
 		}
 	}
 	
-	public void diamond_One() {
+	public void diamond_Top() {
 		for (int i=0; i<4; i++) {
 			for(int j=0; j<(3-i); j++) {
 				System.out.print(" ");
@@ -49,15 +49,26 @@ public class Triangle {
 			for(int j=0; j<(i+1); j++) {
 				System.out.print("★");
 			}
-			for(int j=0; j<(3-i); j++) {
+			for(int j=0; j<(i+1); j++) {
 				System.out.print("★");
 			}
 			System.out.println();
 		}
 	}
 	
-	public void diamond_Two() {
-		
+	public void diamond_Bot() {
+		for (int i=0; i<4; i++) {
+			for(int j=0; j<i; j++) {
+				System.out.print(" ");
+			}
+			for(int j=0; j<(4-i); j++) {
+				System.out.print("★");
+			}
+			for(int j=0; j<(4-i); j++) {
+				System.out.print("★");
+			}
+			System.out.println();
+		}
 	}
 
 }
