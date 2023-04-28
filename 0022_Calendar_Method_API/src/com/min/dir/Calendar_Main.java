@@ -32,7 +32,11 @@ public class Calendar_Main {
 //		api.print_Calendar(2024, 3);
 		
 		Calendar_sh sh = new Calendar_sh();
-		sh.print_Calendar(2024, 4);
+		for (int i = 1; i <= 12; i++) {
+			
+			sh.print_Calendar(2023, i);
+			System.out.println();
+		}
 
 	}
 }

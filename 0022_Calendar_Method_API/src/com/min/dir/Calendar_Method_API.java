@@ -57,8 +57,8 @@ public class Calendar_Method_API {
 		return days;
 	} // calDays(int, int, int)
 	
-	Calendar cal = Calendar.getInstance();
-	public void print_Calendar(int year, int month){	
+	public void print_Calendar(int year, int month){
+		Calendar cal = Calendar.getInstance();
 		cal.set(year, month-1, 1);
 
 		System.out.printf("\t\t% d년 %d월\n",year, month);
@@ -66,7 +66,8 @@ public class Calendar_Method_API {
 		
 		int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK)-1;
 		int dayOfMonth = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
-		int dayOfPreMonth = getPreMonth(year, month-1);
+		cal.set(year, month-2, 1);
+		int dayOfPreMonth = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
 	
 		int startNum = dayOfPreMonth-dayOfWeek+1;
 		for (int i = 0; i < dayOfWeek; i++) {
@@ -87,15 +88,5 @@ public class Calendar_Method_API {
 	
 	} // print_Calendar(int, int)
 
-	public int getPreMonth(int year, int month){
-		int days = 0;
-		cal.set(year, month-1, 1);
-		if(month == 1){
-			days = 31;
-		} else {
-				days = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
-		}
-		return days;
-	}
 	
 }
