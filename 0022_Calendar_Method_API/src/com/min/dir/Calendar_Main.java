@@ -4,8 +4,6 @@ public class Calendar_Main {
 
 	public static void main(String[] args) {
 		
-		Calendar_Method cm = new Calendar_Method();
-		
 		//TODO TEST1
 //		int cnt = 0;
 //		for (int i = 1; i <= 2024; i++) {
@@ -29,7 +27,12 @@ public class Calendar_Main {
 //		System.out.println(cm.calDays(2024, 4, 1));
 		
 		//TODO TEST6
-		cm.print_Calendar(2024, 3);
+
+//		Calendar_Method_API api = new Calendar_Method_API();
+//		api.print_Calendar(2024, 3);
+		
+		Calendar_sh sh = new Calendar_sh();
+		sh.print_Calendar(2024, 4);
 
 	}
 }

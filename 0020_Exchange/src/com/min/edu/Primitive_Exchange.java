@@ -23,6 +23,7 @@ public class Primitive_Exchange {
 	System.out.println("int 256이 long로 변경된 값 : "+l);
 	
 	int max = Integer.MAX_VALUE;
+	System.out.println(max);
 	l = max+1;
 	System.out.println("int Integer.MAX_VALUE+1이 long로 변경된 값 : "+l);
 	l = max+1L;
@@ -47,6 +48,9 @@ public class Primitive_Exchange {
 	
 	double d5 = 1.01;
 	float f5 = 1.01F;
+	
+	double d11 = 1;
+	int i11 = (int)d11;
 
 	// 실수부를 버려야 하기 때문에 반드시 casting 연산자 사용
 //	long l5 = d5;

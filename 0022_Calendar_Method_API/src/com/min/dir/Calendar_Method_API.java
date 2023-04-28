@@ -1,8 +1,9 @@
 package com.min.dir;
 
 import java.util.Iterator;
+import java.util.Calendar;
 
-public class Calendar_Method {
+public class Calendar_Method_API {
 
 	private final int[] LEAP = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 	private final int[] PLAIN = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
@@ -56,46 +57,45 @@ public class Calendar_Method {
 		return days;
 	} // calDays(int, int, int)
 	
-	public void print_Calendar(int year, int month){
-		
+	Calendar cal = Calendar.getInstance();
+	public void print_Calendar(int year, int month){	
+		cal.set(year, month-1, 1);
+
 		System.out.printf("\t\t% d년 %d월\n",year, month);
 		System.out.println("일\t월\t화\t수\t목\t금\t토");
 		
- 		int dayOfWeek = (calDays(year, month, 1)+1-1)%7;
- 		
- 		
- 		
- 		int dayOfPreMonth = 0;
- 		if(month==1) {
- 			dayOfPreMonth = 31;
- 		} else if(month==3){
- 			if(isCheckYear(year)) {
- 				dayOfPreMonth = 29;
- 			} else {
- 				dayOfPreMonth = 28;
- 			}
- 		} else {
- 			dayOfPreMonth = getDayOfMonth(year, month-1);
- 		}
- 		
- 		int startNum = dayOfPreMonth-dayOfWeek+1;
- 		for (int i = 0; i < dayOfWeek; i++) {
+		int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK)-1;
+		int dayOfMonth = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+		int dayOfPreMonth = getPreMonth(year, month-1);
+	
+		int startNum = dayOfPreMonth-dayOfWeek+1;
+		for (int i = 0; i < dayOfWeek; i++) {
 			System.out.printf("%d\t", startNum++);
 		}
- 		
- 		int dayOfMonth = getDayOfMonth(year, month);
- 		for (int i = 1; i <= dayOfMonth; i++) {
- 			System.out.printf("%d\t",i);
-			if((i+dayOfWeek)%7==0) {
-				System.out.println();
-			}
-		}
+		
 
- 		for (int i = 1; i <= 7-((dayOfWeek+dayOfMonth)%7); i++) {
+		for (int i = 1; i <= dayOfMonth; i++) {
+			System.out.printf("%d\t",i);
+		if((i+dayOfWeek)%7==0) {
+			System.out.println();
+		}
+	}
+	
+		for (int i = 1; i <= 7-((dayOfWeek+dayOfMonth)%7); i++) {
 			System.out.printf("%d\t",i);
 		}
- 		
- 		
+	
 	} // print_Calendar(int, int)
+
+	public int getPreMonth(int year, int month){
+		int days = 0;
+		cal.set(year, month-1, 1);
+		if(month == 1){
+			days = 31;
+		} else {
+				days = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+		}
+		return days;
+	}
 	
 }
