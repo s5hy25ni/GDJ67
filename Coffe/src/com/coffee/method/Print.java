@@ -2,6 +2,7 @@ package com.coffee.method;
 
 public class Print {
 	Util util = new Util();
+	Menu menu = new Menu();
 	
 	// 메뉴판을 출력하는 메소드
 	void printMenu(){
@@ -13,6 +14,17 @@ public class Print {
 		System.out.println();
 		System.out.println("└------------------------------┘");
 	} // printMenu()
+	
+	// 주문을 확인하는 메소드이다.
+	void confirm(int num, int cup){
+		/*
+		 *  현재 선택한 메뉴의 이름 = Comm.returnName(num)
+		 *  현재 선택한 수량 = cup
+		 *  현재까지 총 입금액 - 현재까지 총 지불액 = Comm.chargeCal() 
+		 */
+		System.out.printf(" ▷ %s %d잔 주문하셨습니다.\n", menu.returnName(num), cup);
+		System.out.printf(" ▷ 잔액 : %d원\n", Money.chargeCal());
+	 } // confirm()
 	
 	// 추가 입금 여부를 출력하는 메소드
 	void addPayment(int where) {
@@ -71,5 +83,10 @@ public class Print {
 		}
 		
 		return num;
+	}
+	
+	// 영수증을 출력
+	void printBill() {
+		
 	}
 }
