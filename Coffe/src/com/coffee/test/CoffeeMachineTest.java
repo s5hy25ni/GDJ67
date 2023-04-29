@@ -1,13 +1,13 @@
 package com.coffee.test;
 
-import com.coffee.method.Call;
+import com.coffee.method.Process;
 
 public class CoffeeMachineTest {
 
 	public static void main(String[] args) {
-		
-		Call call = new Call();
-		call.order();
-		
+
+		Process p = new Process();
+		p.order();
+
 	}
 }

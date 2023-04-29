@@ -1,13 +1,8 @@
 package com.coffee.method;
 
 public class DTO {
-	int num;
-	int cup;
 
-	/**
-	 * default int totalMoney = 입금한 총 금액 누적
-	 * default int totalPrice = 지불한 총 가격 누적
-	 */
-	static int totalMoney;
-	static int totalPrice;
+	int userNum; // user가 선택한 메뉴, -1한 숫자는 Menu.menus의 인덱스 번호
+	int userCup; // user가 선택한 메뉴의 수량
+
 }
