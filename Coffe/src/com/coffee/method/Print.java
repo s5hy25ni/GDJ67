@@ -20,12 +20,12 @@ public class Print {
 		Arrays.sort(prices);
 
 		while (true) {
-
-			// 입력받은 금액이 최소 가격에서 현재 잔액을 뺀 금액보다 작으면 다시 입금 받음
-			if (money < (prices[0] - mo.chargeCal())) {
+			// 현재 잔액이 최소가격에서 현재 잔액을 뺀 금액보다 적으면 입금을 받음
+			if (mo.chargeCal() < (prices[0] - mo.chargeCal())) {
 				money = u.inputIntValue(" ▶ 입금해주세요 : ");
 				Money.totalMoney += money; // 입금받은 금액을 총 입금액에 누적
-
+				
+				// 입력받은 금액이 최소 가격에서 현재 잔액을 뺀 금액보다 작으면 다시 입금 받음
 				if (money < (prices[0] - mo.chargeCal())) {
 					System.out.printf(" ▷ 최소 %d원 이상 입금하셔야 합니다.\n", (prices[0] - mo.chargeCal()));
 					Money.totalMoney -= money; // 총 입금에서 방금 받은 입금액을 (-)
@@ -136,8 +136,8 @@ public class Print {
 			// 1번 선택시 0보다 큰 수를 입급받고, 입금받은 금액은 총 입금에 포함
 			if (num == 1) {
 				money = u.inputIntValue(" ▶ 입금해주세요 : ");
-				if (money < 0) {
-					System.out.println(" ▷ 0원 이상 입금가능합니다.");
+				if (money < 100) {
+					System.out.println(" ▷ 100원 이상 입금가능합니다.");
 				}
 				Money.totalMoney += money;
 				break;
