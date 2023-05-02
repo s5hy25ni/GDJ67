@@ -24,24 +24,20 @@ public class Print {
 			// 입력받은 금액이 최소 가격에서 현재 잔액을 뺀 금액보다 작으면 다시 입금 받음
 			if (money < (prices[0] - mo.chargeCal())) {
 				money = u.inputIntValue(" ▶ 입금해주세요 : ");
+				Money.totalMoney += money; // 입금받은 금액을 총 입금액에 누적
 
-				while (true) {
-
-					if (money < (prices[0] - mo.chargeCal())) {
-						System.out.printf(" ▷ 최소 %d원 이상 입금하셔야 합니다.\n", (prices[0] - mo.chargeCal()));
-					} else {
-						break;
-					}
-
+				if (money < (prices[0] - mo.chargeCal())) {
+					System.out.printf(" ▷ 최소 %d원 이상 입금하셔야 합니다.\n", (prices[0] - mo.chargeCal()));
+					Money.totalMoney -= money; // 총 입금에서 방금 받은 입금액을 (-)
+					break;
+				} else {
+					break;
 				}
 			} else {
 				break;
 			}
 
 		}
-
-		// 입금액이 확정되면 총 입금에 추가
-		Money.totalMoney += money;
 
 	} // payment()
 

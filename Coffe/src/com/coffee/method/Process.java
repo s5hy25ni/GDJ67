@@ -19,13 +19,13 @@ public class Process {
 			p.confirm(d.userNum, d.userCup);
 			int num = p.endOrNot(cnt);
 
-			if (num == 1) {
+			if (num == 1) { // 영수증 출력 종료 선택시
 				p.printBill();
 				break;
-			} else if (num == 2) {
+			} else if (num == 2) { // 영수증 미출력 종료 선택시
 				break;
 			}
-
+			// 3 -> 추가 주문 선택시 반복
 		}
 
 		System.out.println(" ▷ 주문을 종료합니다.");
