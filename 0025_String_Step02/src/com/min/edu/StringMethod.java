@@ -147,16 +147,115 @@ public class StringMethod {
 		
 	}
 	
-	// matches(String regex)
-	// replace(char oldChar, char newChar)
-	// replaceAll(String regex, String replacement)
-	// split(String regex)
-	// strip() // Java 11 이후 화이트스페이스 제거
-	// substring(int beginIndex)
-	// toCharArray()
-	// trim()
-	// valueOf()
-	// startsWith(String prefix)
-	// endsWith(String suffix)
+	// public boolean matches(String regex)
+	public void fn_matches() {
+		String msg = "사과 청사과 오렌지";
+		String regex = "\\b사과\\b";
+		boolean isc = msg.contains("사과");
+		System.out.println(isc);
+		boolean isc2 = msg.matches("(.*)사과(.*)");
+		boolean isc3 = msg.matches(".*\\b사과\\b.*");
+		System.out.println(isc2);
+		System.out.println(isc3);
+		// chatGPT "사과 청사과 오렌지"에서 "청사과"만 검색하는 자바 정규식
+		
+		String str = "yes";
+		System.out.println(str.matches("[Yy]es"));
+		
+		String strNum = "aaa123";
+		System.out.println(strNum.matches("[0-9]")); // false
+//		System.out.println(strNum.matches("*[0-9]*")); // Exception
+		System.out.println(strNum.matches("a*[0-9]*")); // true 숫자가 나오기 전에 a가 반복(*)?
+		// [a-z] [A-Z] ...
+	}
+	
+	// public String replace(CharSequence target, CharSequence replacement)
+	public void fn_replace(){
+		String str = "pulse"; // 맥박
+		String strAll = "pulsel";
+		String strChange = "purse"; // 지갑
+		
+		String change = str.replace("l", "r");
+		String change2 = strAll.replace("l", "r");
+		System.out.println(change);
+		System.out.println(change2); // 전체를 바꾼다. 주로 공백 지울 때 사용
+	}
+	// public String replaceAll(String regex,String replacement)
+	public void fn_replaceAll() {
+		String str = "!T%56&b";
+		String regex = "[^0-9a-zA-Z]"; // 숫자, 영소대문자만 남김
+		String regex2 = "[^0-9]"; // 숫자만 남김
+		String result = str.replaceAll(regex, ""); // ""로 대체
+		String result2 = str.replaceAll(regex2, "");
+		System.out.println(result);
+		System.out.println(result2);
+	}
+
+	// public String trim();앞뒤의 공백(white space, Unicode 32) 제거
+	public void fn_trim() {
+		String str = "       ho  ho　　　　　";
+		System.out.println(str.length()); // 18
+		String strTrim = str.trim();
+		System.out.println(strTrim.length()); // 11 -> ㄱ한자 공백은 안사라짐
+		System.out.println(strTrim);
+	}
+
+	// public String strip() -> Java 11 이후 앞 뒤 화이트스페이스(blank) 제거
+	public void fn_strip() {
+		String str = "       ho  ho　　　　　";
+		String strStrip = str.strip();
+		System.out.println(strStrip);
+		System.out.println(strStrip.length()); // 6 -> ㄱ한자 공백, \t 등 다 사라짐
+		
+		for (int i = 0; i < 101; i++) {
+			System.out.println((char)i+" : "+i);
+		}
+	}
+	
+	// public char[] toCharArray()
+	// 문자열을 문자형 array로
+	public void fn_toCharArray() {
+		char[] strChar = {'T','O','M','A','T','O'};
+		String str = new String(strChar);
+		System.out.println(str);
+		char[] strConvert = str.toCharArray();
+		System.out.println(strConvert.length);
+		System.out.println(Arrays.toString(strConvert));
+	}
+	
+	// public static String valueOf(T)
+	// 모든 타입을(기본, 참조)을 보이는 그대로 문자열 변경
+	public void fn_valueOf() {
+		// print(), toString()
+		TextClass t = new TextClass();
+		String info = t.toString();
+		System.out.println(info);
+		System.out.println(t); // print를 실행하면 toString을 호출
+		
+		int i = 100;
+		char a = 'a';
+		String result1 = "" + i + a;
+		String result2 = String.valueOf(i)+a;
+		
+		String iStr = String.valueOf(i); // => new String
+		String h = "100";
+		System.out.println(iStr.hashCode()); // ==
+		System.out.println(h.hashCode());
+		
+		System.out.println(System.identityHashCode(iStr)); // !=
+		System.out.println(System.identityHashCode(h));
+		
+		System.out.println(iStr==h); // false
+		System.out.println(iStr.equals(h)); // true
+	}
+	
+	// public boolean startsWith(String prefix) // 접두어
+	// public boolean endsWith(String suffix) // 접미사
+	public void fn_endsWith() {
+		String str = "exam@naver.com";
+		System.out.println(str.endsWith("naver.com")); // true
+		System.out.println(str.endsWith("google.com")); // false
+		
+	}
 	
 }
