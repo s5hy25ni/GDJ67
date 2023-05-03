@@ -19,8 +19,7 @@ public class Lotto {
 		manual = true;
 	}
 
-	private void inputNums(int[] newNums) {
-		int idx = 0;
+	private void autoLotto(int[] newNums) {
 		while (true) {
 			int num = randomNum();
 			if (!checkDup(idx, num)) {
@@ -35,16 +34,6 @@ public class Lotto {
 	private int randomNum() {
 		int num = (int) (Math.random() * 45) + 1;
 		return num;
-	}
-
-	private boolean checkDup(int idx, int num) {
-		boolean isc = false;
-		for (int i = 0; i < idx; i++) {
-			if (nums[i] == num) {
-				isc = true;
-			}
-		}
-		return isc;
 	}
 	
 	@Override
