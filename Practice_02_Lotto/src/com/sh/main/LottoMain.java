@@ -1,6 +1,6 @@
-package com.min.test;
+package com.sh.main;
 
-import com.min.method.Process;
+import com.sh.method.Process;
 
 public class LottoMain {
 
