@@ -11,18 +11,19 @@ package com.min.edu;
  */
 public class TextBlock {
 	public static void main(String[] args) {
-		// 기존의 줄바꿈 : 반드시 Escape 문자 사용
-		String str1 = "안녕하세요\n"
-				+ "반갑습니다\n"
-				+ "수요일입니다\n\r";
-		System.out.println(str1);
-		
-		// 텍스트 블록 사용(DB 넣을 때 유용)
-		String str2 = """
-				안녕하세요
-				여러분
-				흑기사 위성입니다.
-				""";
-		System.out.println(str2);
+//		// 기존의 줄바꿈 : 반드시 Escape 문자 사용
+//		String str1 = "안녕하세요\n"
+//				+ "반갑습니다\n"
+//				+ "수요일입니다\n\r";
+//		System.out.println(str1);
+//		
+//		// 텍스트 블록 사용(DB 넣을 때 유용)
+//		String str2 = """
+//				안녕하세요
+//				여러분
+//				흑기사 위성입니다.
+//				""";
+//		System.out.println(str2);
+		System.out.println("1234\refgh\n1234");
 	}
 }

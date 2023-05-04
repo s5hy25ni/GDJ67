@@ -10,7 +10,7 @@ public class InputUtil {
 		int n = 0;
 		
 		while (true) {
-			System.out.println("정수를 입력해주세요 : ");
+			System.out.print("정수를 입력해주세요 : ");
 			try {
 				Scanner scan = new Scanner(System.in);
 				n = scan.nextInt();
