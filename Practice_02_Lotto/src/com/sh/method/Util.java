@@ -1,5 +1,6 @@
 package com.sh.method;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Util {
@@ -14,9 +15,11 @@ public class Util {
 				Scanner scan = new Scanner(System.in);
 				value = scan.nextInt();
 				return value;
-			} catch (Exception e) {
+			} catch (InputMismatchException e) {
 				System.out.println(" ▷ 숫자만 입력해주세요.");
-			} 
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	} // inputIntValue(String)
 	
@@ -36,4 +39,13 @@ public class Util {
 		}
 		return isc;
 	} // checkDup(int[], int)
+	
+	public String addZero(String str, int wantLength) {
+		if(str.length()<wantLength) {
+			for (int i = 0; i < wantLength-str.length(); i++) {
+				str="0"+str;
+			}
+		}
+		return str;
+	}
 }
