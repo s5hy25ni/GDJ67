@@ -1,5 +1,7 @@
 package com.sh.method;
 
+import java.util.Arrays;
+
 public class Seller {
 	Util u = new Util();
 	
@@ -7,7 +9,12 @@ public class Seller {
 	String[] lottoLines;
 	String[][] lottoPapers;
 	Paper[] papers;
+	int[] winLotto;
+	int bonusNum;
 	
+	public Seller() {
+		// TODO Auto-generated constructor stub
+	}
 	public Seller(Lotto[] buyerLottos) {
 		lottos = buyerLottos.clone();
 		getLottoLine();
@@ -20,7 +27,6 @@ public class Seller {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 		}
-		System.out.println(" ▷ 로또가 모두 생성되었습니다.");
 		System.out.println(" ▷ 구매하신 로또를 인쇄합니다.");
 		System.out.println();
 
@@ -34,8 +40,82 @@ public class Seller {
 		}
 	}
 	
-	public void drawLots() {
-		Lotto win = new Lotto("당첨");
+	public void drawWinLotto() {
+//		System.out.printf(" ▷ 제 %d회 로또 추첨을 시작합니다.",papers[papers.length-1]);
+		System.out.printf(" ▷ 제 %d회 로또 추첨을 시작합니다.\n",1066);
+		System.out.println();
+		Lotto temp = new Lotto("당첨");
+		winLotto = temp.getNums().clone();
+		for (int i = 0; i < winLotto.length; i++) {
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+			}
+			System.out.printf(" ▷ %d번 당첨 숫자 : %d\n", i+1,winLotto[i]);
+		}
+		System.out.println();		
+	}
+	
+	public void drawBonusNum() {
+		System.out.println(" ▷ 보너스 숫자 추첨을 시작합니다.");
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+		}
+		while(true) {
+			bonusNum = u.randomNum(45)+1;
+			if(!u.checkDup(winLotto, bonusNum)) {
+				break;
+			}
+		}
+		System.out.printf(" ▷ 보너스 숫자 : %d\n", bonusNum);
+		System.out.println();		
+		Arrays.sort(winLotto);
+	}
+	
+	public void printRanking() {
+		System.out.println(" ▷ 당첨 여부를 확인힙니다.");
+		System.out.println();
+		
+	}
+	
+	public void checkRanking() {
+		for (int i = 0; i < lottos.length; i++) {
+			if(compareLottos(lottos[i].getNums(), winLotto)) {
+				lottos[i].setRanking(1);
+			} else {
+				switch (i) {
+				case 4 -> lottos[i].setRanking(checkBonues(lottos[i].getNums()));
+				case 3 -> lottos[i].setRanking(4);
+				case 2 -> lottos[i].setRanking(5);
+				default -> lottos[i].setRanking(0);
+				}
+			}
+		}
+	}
+	
+	public int checkBonues(int[] chkLotto) {
+		int rank = 3;
+		for (int i = 0; i < chkLotto.length; i++) {
+			if(chkLotto[i] == bonusNum) {
+				rank = 2;
+			}
+		}
+		return rank;
+	}
+	
+	
+	public boolean compareLottos(int[] buyerLotto, int[] winLotto) {
+		boolean isc = true;
+		
+		for (int i = 0; i < 6; i++) {
+			if(buyerLotto[i] != winLotto[i]) {
+				isc = false;
+				break;
+			}
+		}
+		
+		return isc;
 	}
 	
 	private void getLottoLine() {

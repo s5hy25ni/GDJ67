@@ -23,6 +23,12 @@ public class Util {
 		}
 	} // inputIntValue(String)
 	
+	public int randomNum(int size) {
+		int result = 0;
+		result = (int)(Math.random()*size);
+		return result;
+	}
+	
 	/**
 	 * 기존 array에 중복값이 있는지 확인하는 메소드
 	 * @param chkNums 기존 array

@@ -26,7 +26,7 @@ public class Paper {
 		start.set(2002, 11, 8); // 로또 시작일 2002.12.7.토
 		long gapSec = (issue.getTimeInMillis()-start.getTimeInMillis())/1000;
 		long gapDay = gapSec/(24*60*60);
-		round = ((int)gapDay/7)+1;
+		round = ((int)(gapDay/7))+1;
 	}
 	
 	private void setDrawAndDead() {
@@ -39,7 +39,7 @@ public class Paper {
 	private void setSerialNum() {
 		String random;
 		for (int i = 0; i < 7; i++) { // 7개
-			random = String.valueOf((int)(Math.random()*100000)); // 00000 ~ 99999 까지 랜덤
+			random = String.valueOf(u.randomNum(100000)); // 00000 ~ 99999 까지 랜덤
 			random = u.addZero(random, 5);
 			serialNum += random;
 			if(i<6) {

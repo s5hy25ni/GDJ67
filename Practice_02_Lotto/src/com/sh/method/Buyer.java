@@ -80,13 +80,13 @@ public class Buyer {
 	 */
 	public void inputNums(){
 		for(int i = 0; i<eachAmt[0]; i++) {
-			System.out.printf(" ▷ %d번째 로또는 수동입니다.\n",i+1);
+			System.out.printf(" ▷ %d번 로또는 수동입니다.\n",i+1);
 			System.out.println();
 			lottos[i] = new Lotto(inputHandNum(), "수동");
 		}
 		for(int i = eachAmt[0]; i<eachAmt[1]; i++) {
-			System.out.printf(" ▷ %d번째 로또는 반자동입니다.\n", i+1);
-			System.out.println(" ▷ 0을 입력하시거나 5번째 숫자까지 입력하시면 수동 입력이 종료됩니다.");
+			System.out.printf(" ▷ %d번 로또는 반자동입니다.\n", i+1);
+			System.out.println(" ▷ 0을 입력하시거나 다섯 번째 숫자까지 입력하시면 수동 입력이 종료됩니다.");
 			System.out.println();
 			lottos[i] = new Lotto(inputHalfNum(), "반자동");
 		}
@@ -95,6 +95,8 @@ public class Buyer {
 		for(int i = eachAmt[1]; i<totalAmt; i++) {
 			lottos[i] = new Lotto("자동");
 		}
+		System.out.println(" ▷ 로또가 모두 생성되었습니다.");
+		System.out.println();
 	} // addLottos()
 	
 	/*
@@ -106,7 +108,7 @@ public class Buyer {
 		
 		for(int i=0; i<nums.length; i++) {
 			while(true) {
-				chkNum = u.inputIntValue(" ▶ 수동 "+(i+1)+"번째 숫자 입력 : ");
+				chkNum = u.inputIntValue(" ▶ 수동 "+(i+1)+"번 숫자 입력 : ");
 				if(chkNum<1 || chkNum>45) {
 					System.out.println(" ▷ 1 이상 45 이하 숫자를 입력해주세요.");
 				} else if(u.checkDup(nums, chkNum)){
@@ -132,14 +134,14 @@ public class Buyer {
 		
 		for(int i=0; i<nums.length; i++) {
 			while(true) {
-				chkNum = u.inputIntValue(" ▶ 반자동 "+(i+1)+"번째 숫자 입력 : ");
+				chkNum = u.inputIntValue(" ▶ 반자동 "+(i+1)+"번 숫자 입력 : ");
 				if(i == 0 && chkNum == 0) {
-					System.out.println(" ▷ 1번재 숫자는 무조건 입력해주셔야 합니다.");
+					System.out.println(" ▷ 첫 번째 숫자는 무조건 입력해주셔야 합니다.");
 					System.out.println(" ▷ 1 이상 45 이하 숫자를 입력해주세요.");
 				} else if(chkNum<0 || chkNum>45) {
 					System.out.println(" ▷ 0 이상 45 이하 숫자를 입력해주세요.");
 				} else if(chkNum != 0 && u.checkDup(nums, chkNum)){ // 먼저 쓰면 0이 초기값이라 중복 체크 됨
-					System.out.printf(" ▷ [%d]는 중복된 숫자입니다. 다시 입력해주세요.\n",chkNum);
+					System.out.printf(" ▷ %d는 중복된 숫자입니다. 다시 입력해주세요.\n",chkNum);
 				} else {
 					nums[i] = chkNum;
 					break;
