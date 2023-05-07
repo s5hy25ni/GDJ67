@@ -1,5 +1,6 @@
 package com.sh.ppt;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Characteristic {
@@ -82,21 +83,95 @@ public class Characteristic {
 //		System.out.println("ref의 내용물 : "+ref.toString());
 //		System.out.println("ref3의 내용물 : "+ref3.toString());
 //		System.out.println("ref == ref3 ? "+(ref==ref3));
+//		System.out.println();
+//		
+//		// String 비교
+//		String str = "JavaString";
+//		String str2 = "JavaString";
+//		String str3 = str;
+//		System.out.println("str == str2 ? "+(str==str2));
+//		System.out.println("str == str3 ? "+(str==str3));
+//		
+//		String str4 = new String("JavaString");
+//		System.out.println("str == str4 ? "+(str==str4));
+		
+//		int i = 1;
+//		int i2 = 2;
+//		int i3 = i+i2;
+//		
+//		char c = 'a';
+//		char c2 = 'a';S
+//		String c3 = c+c2;
+//		
+//		boolean b = false;
+//		boolean b2 = false;
+//		boolean b3 = b+b2;
+//		
+//		String str = "Java";
+//		String str2 = "String";
+//		String str3 = str+str2;
+//		String str4 = "Java"+"String";
+//		
+		
+		Operator o = new Operator();
+//		String str = "Java";
+//		String str2 = "String";
+//		String str3 = o.sum(str, str2);
+//		System.out.println("str+str2 = "+str3);
+		
+		
+//		int i = 1;
+//		char c = 'a';
+//		System.out.println("1+a = "+i+c);
+//		char c2 = '가';
+//		System.out.println("1+가 = "+i+c2);
+		
+		String str = "Java";
+		String str2 = "";
+		String str3 = null;
+		
+//		System.out.println(str.charAt(0));
+//		try {
+//			System.out.println(str2.charAt(0));
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		try {
+//			System.out.println(str3.charAt(0));
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+		
+		System.out.println(str.hashCode());
+		System.out.println(str2.hashCode());
+		try {
+			System.out.println(str3.hashCode());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		System.out.println();
 		
-		// String 비교
-		String str = "JavaString";
-		String str2 = "JavaString";
-		String str3 = str;
-		System.out.println("str == str2 ? "+(str==str2));
-		System.out.println("str == str3 ? "+(str==str3));
+		System.out.println(System.identityHashCode(str));
+		System.out.println(System.identityHashCode(str2));
+		System.out.println(System.identityHashCode(str3));
+//		
+//		System.out.println("1+null+a = "+(1+str+'a'));
+//		System.out.println("1+\"\"+a = "+(1+str2+'a'));
+//		System.out.println("\"\"+null+java = "+(str2+str+str3));
 		
-		String str4 = new String("JavaString");
-		System.out.println("str == str4 ? "+(str==str4));
-		
-		
-		
-		
+//		int[] i_arr = new int[3];
+//		double[] d_arr = new double[3];
+//		char[] c_arr = new char[3];
+//		boolean[] b_arr = new boolean[3];
+//		String[] s_arr = new String[3];
+//		
+//		System.out.println(Arrays.toString(i_arr));
+//		System.out.println(Arrays.toString(d_arr));
+//		System.out.println(Arrays.toString(c_arr));
+//		System.out.println(Arrays.toString(b_arr));
+//		System.out.println(Arrays.toString(s_arr));
+
 		
 		
 		
