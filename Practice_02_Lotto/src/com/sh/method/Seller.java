@@ -79,43 +79,65 @@ public class Seller {
 		
 	}
 	
-	public void checkRanking() {
-		for (int i = 0; i < lottos.length; i++) {
-			if(compareLottos(lottos[i].getNums(), winLotto)) {
-				lottos[i].setRanking(1);
-			} else {
-				switch (i) {
-				case 4 -> lottos[i].setRanking(checkBonues(lottos[i].getNums()));
-				case 3 -> lottos[i].setRanking(4);
-				case 2 -> lottos[i].setRanking(5);
-				default -> lottos[i].setRanking(0);
-				}
+	public void checkRanking(int[][] buyer, int[] winner, int bonus) {
+		for (int i = 0; i < buyer.length; i++) {
+			switch (compareLottos(buyer[i], winner)) {
+			case 6 -> System.out.println("1등 : "+Arrays.toString(buyer[i]));
+			case 5 -> System.out.printf("%d등 : %s\n",checkBonus(buyer[i], bonus),Arrays.toString(buyer[i]));
+			case 4 -> System.out.println("4등 : "+Arrays.toString(buyer[i]));
+			case 3 -> System.out.println("5등 : "+Arrays.toString(buyer[i]));
+			default -> System.out.println("낙첨 : "+Arrays.toString(buyer[i]));
 			}
 		}
 	}
+//	public void checkRanking() {
+//		for (int i = 0; i < lottos.length; i++) {
+//			if(compareLottos(lottos[i].getNums(), winLotto)) {
+//				lottos[i].setRanking(1);
+//			} else {
+//				switch (i) {
+//				case 4 -> lottos[i].setRanking(checkBonues(lottos[i].getNums()));
+//				case 3 -> lottos[i].setRanking(4);
+//				case 2 -> lottos[i].setRanking(5);
+//				default -> lottos[i].setRanking(0);
+//				}
+//			}
+//		}
+//	}
 	
-	public int checkBonues(int[] chkLotto) {
+	public int checkBonus(int[] chkLotto, int bonus) {
 		int rank = 3;
-		for (int i = 0; i < chkLotto.length; i++) {
-			if(chkLotto[i] == bonusNum) {
+		for (int i = 0; i < 6; i++) {
+			if(chkLotto[i] == bonus) {
 				rank = 2;
 			}
 		}
 		return rank;
-	}
+	}	
+//	public int checkBonus(int[] chkLotto) {
+//		int rank = 3;
+//		for (int i = 0; i < chkLotto.length; i++) {
+//			if(chkLotto[i] == bonusNum) {
+//				rank = 2;
+//			}
+//		}
+//		return rank;
+//	}
 	
 	
-	public boolean compareLottos(int[] buyerLotto, int[] winLotto) {
-		boolean isc = true;
+	public int compareLottos(int[] buyerLotto, int[] winLotto) {
+		int cnt = 0;
 		
 		for (int i = 0; i < 6; i++) {
-			if(buyerLotto[i] != winLotto[i]) {
-				isc = false;
-				break;
+			for (int j = 0; j < 6; j++) {
+				if(buyerLotto[i] == winLotto[j]) {
+					cnt++;
+					break;
+				}
 			}
 		}
 		
-		return isc;
+		return cnt;
 	}
 	
 	private void getLottoLine() {
@@ -127,6 +149,29 @@ public class Seller {
 				lottoNums += u.addZero(String.valueOf(lottos[i].getNums()[j]),2);
 				if(j<5) {
 					lottoNums += "　";
+				}
+			}
+			lottoLines[i] = getSequence(i%5)+"　"+lottos[i].getType()+"\t"+lottoNums;
+		}
+	}
+	
+	private void getLottoLine(String ranking, int[][] buyerLottos) {
+		String[] winLines = new String[6];
+		String winNums;
+		for (int i = 0; i < buyerLottos.length; i++) {
+			winNums = "";
+			for(int j = 0; j < buyerLottos[i].length; j++) {
+				winNums += u.addZero(String.valueOf(buyerLottos[i][j]),2);
+//				switch (ranking) {
+//				case 1 ->  
+//				case 2 ->
+//				case 3 ->
+//				case 4 ->
+//				case 5 ->
+//				default ->
+//				}
+				if(j<5) {
+					winNums += "　";
 				}
 			}
 			lottoLines[i] = getSequence(i%5)+"　"+lottos[i].getType()+"\t"+lottoNums;
