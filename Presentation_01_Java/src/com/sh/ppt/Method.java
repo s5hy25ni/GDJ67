@@ -76,9 +76,24 @@ public class Method {
 
 		Search search = new Search();
 		
-		String text = "endendendend";
-		String target = "end";
+		String text = "Uh-huh, listen, boy\r\n"
+				+ "My first love story\r\n"
+				+ "Ooh-whoa-oh, ooh-whoa-oh, yeah\r\n"
+				+ "My angel and my girls\r\n"
+				+ "My sunshine (uh, uh, let's go)\r\n"
+				+ "너무 너무 멋져, 눈이 눈이 부셔\r\n"
+				+ "숨을 못 쉬겠어, 떨리는, girl\r\n"
+				+ "Gee, gee, gee, gee, baby, baby, baby\r\n"
+				+ "Gee, gee, gee, gee, baby, baby, baby\r\n"
+				+ "Oh, 너무 부끄러워, 쳐다 볼 수 없어\r\n"
+				+ "사랑에 빠져서 수줍은 girl\r\n"
+				+ "Gee, gee, gee, gee, baby, baby, baby\r\n"
+				+ "Gee, gee, gee, gee, be-be-be, be-be-be";
+		
+		String target = "Uh";
+		
 		search.nextSearch(text,target);
+		search.nextSearch(text, target);
 		
 		
 		
