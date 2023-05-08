@@ -6,7 +6,7 @@ public class Buyer {
 	private int deposit;
 	private int totalAmt;
 	private int[] eachAmt = new int[2];
-	private Lotto[] lottos;	
+	private Lotto[] lottos;
 	
 	public Lotto[] getLottos() {
 		return lottos.clone();

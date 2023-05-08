@@ -174,7 +174,7 @@ public class Seller {
 					winNums += "　";
 				}
 			}
-			lottoLines[i] = getSequence(i%5)+"　"+lottos[i].getType()+"\t"+lottoNums;
+			lottoLines[i] = getSequence(i%5)+"　"+lottos[i].getType()+"\t"+winNums;
 		}
 	}
 	
