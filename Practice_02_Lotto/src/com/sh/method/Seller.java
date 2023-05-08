@@ -13,13 +13,49 @@ public class Seller {
 	int bonusNum;
 	
 	public Seller() {
-		// TODO Auto-generated constructor stub
+		// 테스트용
 	}
+	
 	public Seller(Lotto[] buyerLottos) {
 		lottos = buyerLottos.clone();
 		getLottoLine();
 		getLottoPaper();
 		papers = new Paper[lottoPapers.length];
+	}
+	
+	private void getLottoLine() {
+		lottoLines = new String[lottos.length];
+		String lottoNums = "";
+		for (int i = 0; i < lottos.length; i++) {
+			for(int j = 0; j < lottos[i].getNums().length; j++) {
+				lottoNums += ("　"+u.addZero(String.valueOf(lottos[i].getNums()[j]),2));
+			}
+			lottoLines[i] = getSequence(i%5)+"　"+lottos[i].getType()+"\t"+lottoNums;
+		}
+	}
+	
+	private String getSequence(int seq) {
+		String line = switch(seq){
+			case 0->"A";
+			case 1->"B";
+			case 2->"C";
+			case 3->"D";
+			default->"E";
+		};
+		return line;
+	}
+	
+	private void getLottoPaper() {
+		lottoPapers = new String[((lottoLines.length-1)/5)+1][5];
+		for (int i = 0; i < lottoPapers.length; i++) {
+			for (int j = i*5; j<(i+1)*5; j++) { 
+				if(j==lottoLines.length) {
+					break;
+				} else {					
+					lottoPapers[i][j%5] = lottoLines[j];
+				}
+			}
+		}
 	}
 	
 	public void printPapers() {
@@ -139,22 +175,7 @@ public class Seller {
 		
 		return cnt;
 	}
-	
-	private void getLottoLine() {
-		lottoLines = new String[lottos.length];
-		String lottoNums;
-		for (int i = 0; i < lottos.length; i++) {
-			lottoNums = "";
-			for(int j = 0; j < lottos[i].getNums().length; j++) {
-				lottoNums += u.addZero(String.valueOf(lottos[i].getNums()[j]),2);
-				if(j<5) {
-					lottoNums += "　";
-				}
-			}
-			lottoLines[i] = getSequence(i%5)+"　"+lottos[i].getType()+"\t"+lottoNums;
-		}
-	}
-	
+
 	private void getLottoLine(String ranking, int[][] buyerLottos) {
 		String[] winLines = new String[6];
 		String winNums;
@@ -176,31 +197,6 @@ public class Seller {
 			}
 			lottoLines[i] = getSequence(i%5)+"　"+lottos[i].getType()+"\t"+winNums;
 		}
-	}
-	
-	private void getLottoPaper() {
-		getLottoLine();
-		lottoPapers = new String[((lottoLines.length-1)/5)+1][5];
-		for (int i = 0; i < lottoPapers.length; i++) {
-			for (int j = i*5; j<(i+1)*5; j++) { 
-				if(j==lottoLines.length) {
-					break;
-				} else {					
-					lottoPapers[i][j%5] = lottoLines[j];
-				}
-			}
-		}
-	}
-	
-	private String getSequence(int seq) {
-		String line = switch(seq){
-			case 0->"A";
-			case 1->"B";
-			case 2->"C";
-			case 3->"D";
-			default->"E";
-		};
-		return line;
 	}
 
 }

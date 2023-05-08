@@ -13,6 +13,9 @@ public class Paper {
 	private String[] lottoPaper;
 	private int price;
 	
+	public Paper() {
+		// test
+	}	
 	public Paper(String[] lottoPaper) {
 		setRound();
 		setDrawAndDead();
@@ -23,11 +26,28 @@ public class Paper {
 
 	private void setRound() {
 		Calendar start = Calendar.getInstance();
-		start.set(2002, 11, 8); // 로또 시작일 2002.12.7.토
+		start.set(2002, 11, 7); // 로또 시작일 2002.12.7.토
+//		long gapSec = (removeDayGap(issue)-removeDayGap(start))/1000;
 		long gapSec = (issue.getTimeInMillis()-start.getTimeInMillis())/1000;
 		long gapDay = gapSec/(24*60*60);
 		round = ((int)(gapDay/7))+1;
+		System.out.println(round);
+		System.out.println(round);
+		System.out.println(round);
+		System.out.println(round);
+		System.out.println(round);
+		System.out.println(round);
 	}
+	
+//	private long removeDayGap(Calendar cal) {
+//		Calendar dayStart = Calendar.getInstance();
+//		dayStart.set(cal.get(Calendar.YEAR), 
+//						cal.get(Calendar.MONTH),
+//						cal.get(Calendar.DATE),
+//						0, 0, 0);
+//		long dayGap = cal.getTimeInMillis()-dayStart.getTimeInMillis();
+//		return cal.getTimeInMillis()-dayGap;
+//	}
 	
 	private void setDrawAndDead() {
 		int gapDay = 7-draw.get(Calendar.DAY_OF_WEEK);
@@ -41,10 +61,7 @@ public class Paper {
 		for (int i = 0; i < 7; i++) { // 7개
 			random = String.valueOf(u.randomNum(100000)); // 00000 ~ 99999 까지 랜덤
 			random = u.addZero(random, 5);
-			serialNum += random;
-			if(i<6) {
-				serialNum += "　";
-			}
+			serialNum += ("　"+random);
 		}
 	}
 	

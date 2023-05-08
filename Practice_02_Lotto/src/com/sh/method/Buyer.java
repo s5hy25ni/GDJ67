@@ -5,20 +5,16 @@ public class Buyer {
 	
 	private int deposit;
 	private int totalAmt;
-	private int[] eachAmt = new int[2];
+	private int[] accAmt = new int[2];
 	private Lotto[] lottos;
 	
-	public Lotto[] getLottos() {
-		return lottos.clone();
+	public Buyer() {
+		System.out.println("\t\t동　행　복　권");
+		System.out.println();
+		System.out.println(" ▷ 로또 구매를 시작합니다.");
+		System.out.println();
 	}
-
-	/**
-	 * 총 로또 구매 금액(deposit)을 입력받아 멤버필드에 입력하는 메소드<br>
-	 * 1,000원 이상부터 1,000원 단위로 받음<br>
-	 * deposit = 입력 받은 금액;<br>
-	 * totalAmt = deposit/1000;<br>
-	 * lottos = new Lotto[totalAmt];
-	 */
+	
 	public void inputDeposit() {
 		int dep = 0;
 		
@@ -40,68 +36,54 @@ public class Buyer {
 		System.out.println();
 	} // inputDeposit()
 	
-	/**
-	 * 각각 로또 장수를 입력받아 누적하는 메소드<br>
-	 * eachAmt[0] = 입력받은 수동 로또 수<br>
-	 * eachAmt[1] = 수동 로또 수에 입력받은 반자동 로또 수를 더함
-	 */
 	public void inputEachAmt() {
 		while(true) {
-			eachAmt[0] = u.inputIntValue(" ▶ 수　동 개수 : ");
-			if(eachAmt[0]<0 || eachAmt[0]>totalAmt) {
+			accAmt[0] = u.inputIntValue(" ▶ 수　동 개수 : ");
+			if(accAmt[0]<0 || accAmt[0]>totalAmt) {
 				System.out.printf(" ▷ 0 이상 %d 이하 숫자를 입력해주세요.\n", totalAmt);
 			} else {
 				break;
 			}
 		}
 		while(true) {
-			if(eachAmt[0]==totalAmt) {
+			if(accAmt[0]==totalAmt) {
 				System.out.println(" ▷ 반자동 개수 : 0");
-				eachAmt[1] += eachAmt[0];
+				accAmt[1] += accAmt[0];
 				break;
 			}
-			eachAmt[1] = u.inputIntValue(" ▶ 반자동 개수 : ");
-			if(eachAmt[1]<0 || eachAmt[1]>(totalAmt-eachAmt[0])){
-				System.out.printf(" ▷ 0 이상 %d 이하 숫자를 입력해주세요.\n", totalAmt-eachAmt[0]);
+			accAmt[1] = u.inputIntValue(" ▶ 반자동 개수 : ");
+			if(accAmt[1]<0 || accAmt[1]>(totalAmt-accAmt[0])){
+				System.out.printf(" ▷ 0 이상 %d 이하 숫자를 입력해주세요.\n", totalAmt-accAmt[0]);
 			} else {
-				eachAmt[1] += eachAmt[0];
+				accAmt[1] += accAmt[0];
 				break;
 			}
 		}
-		System.out.printf(" ▷ 자　동 개수 : %d\n", totalAmt-eachAmt[1]);	
+		System.out.printf(" ▷ 자　동 개수 : %d\n", totalAmt-accAmt[1]);	
 		System.out.println();
 	} // inputEachAmt()
-	
-	/**
-	 * 각각 개수에 맞춰<br>
-	 * 수동 -> 로또 번호 입력<br>
-	 * 반자동 -> 로또 번호 입력 + 생성<br>
-	 * 자동 -> 로또 번호 생성
-	 */
+
 	public void inputNums(){
-		for(int i = 0; i<eachAmt[0]; i++) {
+		for(int i = 0; i<accAmt[0]; i++) {
 			System.out.printf(" ▷ %d번 로또는 수동입니다.\n",i+1);
 			System.out.println();
-			lottos[i] = new Lotto(inputHandNum(), "수동");
+			lottos[i] = new Lotto("수동", inputHandNum());
 		}
-		for(int i = eachAmt[0]; i<eachAmt[1]; i++) {
+		for(int i = accAmt[0]; i<accAmt[1]; i++) {
 			System.out.printf(" ▷ %d번 로또는 반자동입니다.\n", i+1);
 			System.out.println(" ▷ 0을 입력하시거나 다섯 번째 숫자까지 입력하시면 수동 입력이 종료됩니다.");
 			System.out.println();
-			lottos[i] = new Lotto(inputHalfNum(), "반자동");
+			lottos[i] = new Lotto("반자동", inputHalfNum());
 		}
-		System.out.printf(" ▷ 남은 로또는 자동으로 생성됩니다.\n",totalAmt-eachAmt[1]);
+		System.out.printf(" ▷ 남은 로또는 자동으로 생성됩니다.\n",totalAmt-accAmt[1]);
 		System.out.println();
-		for(int i = eachAmt[1]; i<totalAmt; i++) {
+		for(int i = accAmt[1]; i<totalAmt; i++) {
 			lottos[i] = new Lotto("자동");
 		}
 		System.out.println(" ▷ 로또가 모두 생성되었습니다.");
 		System.out.println();
 	} // addLottos()
-	
-	/*
-	 * 6개의 숫자를 증복없이 입력받아 반환하는 메소드
-	 */
+
 	private int[] inputHandNum() {
 		int[] nums = new int[6];
 		int chkNum;
@@ -121,13 +103,9 @@ public class Buyer {
 		}
 		
 		System.out.println();
-		
 		return nums;
 	} // inputHandNum()
-	
-	/*
-	 * 1개~5개의 숫자를 중복없이 입력받아 반환하는 메소드
-	 */
+
 	private int[] inputHalfNum() {
 		int[] nums = new int[6];
 		int chkNum;
@@ -159,4 +137,7 @@ public class Buyer {
 		return nums;
 	} // inputHalfNum()
 
+	public Lotto[] getLottos() {
+		return lottos.clone();
+	}
 }
