@@ -13,9 +13,6 @@ public class Paper {
 	private String[] lottoPaper;
 	private int price;
 	
-	public Paper() {
-		// test
-	}	
 	public Paper(String[] lottoPaper) {
 		setRound();
 		setDrawAndDead();
@@ -81,7 +78,7 @@ public class Paper {
 			if(lottoPaper[i]==null) {
 				break;
 			}
-			System.out.println("\t\t"+lottoPaper[i]);
+			System.out.println("\t"+lottoPaper[i]);
 		}
 		System.out.println("--------------------------------------------------------");
 		System.out.println(" 금액\t\t\t\t\t\t\t\t\t￦"+price);

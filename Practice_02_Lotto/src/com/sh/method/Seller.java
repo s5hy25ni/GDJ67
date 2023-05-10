@@ -14,10 +14,7 @@ public class Seller {
 	private int bonusNum;
 	private String[] drawLines;
 	private String[][] drawPapers;
-	
-	public Seller() {
-		// 테스트용
-	}
+	private int[][] prize;
 	
 	public Seller(Lotto[] buyerLottos) {
 		lottos = buyerLottos.clone();
@@ -74,8 +71,7 @@ public class Seller {
 	}
 	
 	public void drawWinLotto() {
-//		System.out.printf(" ▷ 제 %d회 로또 추첨을 시작합니다.",papers[papers.length-1]);
-		System.out.printf(" ▷ 제 %d회 로또 추첨을 시작합니다.\n",1066);
+		System.out.printf(" ▷ 제 %d회 로또 추첨을 시작합니다.",papers[papers.length-1].getRound());
 		System.out.println();
 		Lotto temp = new Lotto("당첨", 7);
 		winLotto = new int[temp.getNums().length-1];
@@ -117,11 +113,12 @@ public class Seller {
 					cnt++;
 					drawNum += ("\t("+u.addZero(String.valueOf(winLotto[j]), 2)+")");
 				} else if(lottos[i].getNums()[j]==bonusNum) {
-					bonusIn = false;
+					bonusIn = true;
 					drawNum += ("\t("+u.addZero(String.valueOf(bonusNum), 2)+")");
 				} else {
 					drawNum += ("\t"+u.addZero(String.valueOf(lottos[i].getNums()[j]), 2));
 				}
+//				prize[i][j] = checkPrize(cnt, bonusIn);
 			}
 			
 			drawLines[i] = getSequence(i%5)+"\t"+checkRanking(cnt, bonusIn)+drawNum;
@@ -136,8 +133,11 @@ public class Seller {
 		for (int i = 0; i < winLotto.length-1; i++) {
 			System.out.printf("\t%d",winLotto[i]);
 		}
-		System.out.printf("　+　%d\t　　\n",bonusNum);
-		System.out.println("\t\t\t\t총 얼마 당첨");
+		System.out.printf("　+　%s\t　　\n",u.addZero(String.valueOf(bonusNum), 2));
+		System.out.printf("\t\t\t\t총 얼마 당첨\n");
+//		for (int i = 0; i < winLotto.length; i++) {			
+//			System.out.printf("\t\t\t\t총 %d원 당첨\n",calPrize(i));
+//		}
 		for (int i = 0; i < drawPaper.length; i++) {
 			if(drawPaper[i]==null) {
 				break;
@@ -162,8 +162,31 @@ public class Seller {
 			}
 		}
 		};
-		
+			
 		return rank;
 	}
-
+	private int checkPrize(int cnt, boolean bonusIn) {
+		int prize  = switch (cnt)  {
+		case 6 -> 2000000000;
+		case 4 -> 50000;
+		case 3 -> 5000;
+		case 2,1,0 -> 0;
+		default -> {
+			if(bonusIn) {
+				yield 70000000;
+			}else{
+				yield 5000000;
+			}
+		}
+	};
+		return prize;
+	}
+	
+	private int calPrize(int seq) {
+		int sum = 0;
+		for (int i = 0; i < prize.length; i++) {
+				sum += prize[seq][i];
+		}
+		return sum;
+	}
 }

@@ -1,5 +1,6 @@
 package com.sh.method;
 
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -37,6 +38,7 @@ public class Buyer {
 			accAmt[0] = inputIntValue(" ▶ 수동\t\t>\t");
 			if(accAmt[0]<0 || accAmt[0]>totalAmt) {
 				System.out.printf(" ▷ 0 이상 %d 이하 숫자를 입력해주세요.\n", totalAmt);
+				System.out.println();
 			} else {
 				break;
 			}
@@ -50,6 +52,7 @@ public class Buyer {
 			accAmt[1] = inputIntValue(" ▶ 반자동\t>\t");
 			if(accAmt[1]<0 || accAmt[1]>(totalAmt-accAmt[0])){
 				System.out.printf(" ▷ 0 이상 %d 이하 숫자를 입력해주세요.\n", totalAmt-accAmt[0]);
+				System.out.println();
 			} else {
 				accAmt[1] += accAmt[0];
 				break;
@@ -67,7 +70,7 @@ public class Buyer {
 		for(int i = 0; i<accAmt[0]; i++) {
 			System.out.printf(" ▷ %d번 로또는 수동입니다.\n",i+1);
 			System.out.println();
-			lottos[i] = new Lotto("수동", inputHandNum());
+			lottos[i] = new Lotto("수동\t", inputHandNum());
 		}
 		for(int i = accAmt[0]; i<accAmt[1]; i++) {
 			System.out.printf(" ▷ %d번 로또는 반자동입니다.\n", i+1);
@@ -78,7 +81,7 @@ public class Buyer {
 		System.out.printf(" ▷ 남은 로또는 자동으로 생성됩니다.\n",totalAmt-accAmt[1]);
 		System.out.println();
 		for(int i = accAmt[1]; i<totalAmt; i++) {
-			lottos[i] = new Lotto("자동");
+			lottos[i] = new Lotto("자동\t");
 		}
 		System.out.println(" ▷ 로또가 모두 생성되었습니다.");
 		System.out.println();
@@ -93,8 +96,10 @@ public class Buyer {
 				chkNum = inputIntValue(" ▶ 수동 "+(i+1)+"번 숫자 입력 >\t ");
 				if(chkNum<1 || chkNum>45) {
 					System.out.println(" ▷ 1 이상 45 이하 숫자를 입력해주세요.");
+					System.out.println();
 				} else if(u.checkDup(nums, chkNum)){
 					System.out.printf(" ▷ [%d]는 중복된 숫자입니다. 다시 입력해주세요.\n",chkNum);
+					System.out.println();
 				} else {
 					nums[i] = chkNum;
 					break;
@@ -116,10 +121,13 @@ public class Buyer {
 				if(i == 0 && chkNum == 0) {
 					System.out.println(" ▷ 첫 번째 숫자는 무조건 입력해주셔야 합니다.");
 					System.out.println(" ▷ 1 이상 45 이하 숫자를 입력해주세요.");
+					System.out.println();
 				} else if(chkNum<0 || chkNum>45) {
 					System.out.println(" ▷ 0 이상 45 이하 숫자를 입력해주세요.");
+					System.out.println();
 				} else if(chkNum != 0 && u.checkDup(nums, chkNum)){ // 먼저 쓰면 0이 초기값이라 중복 체크 됨
 					System.out.printf(" ▷ %d는 중복된 숫자입니다. 다시 입력해주세요.\n",chkNum);
+					System.out.println();
 				} else {
 					nums[i] = chkNum;
 					break;
@@ -148,6 +156,7 @@ public class Buyer {
 				return value;
 			} catch (InputMismatchException e) {
 				System.out.println(" ▷ 숫자만 입력해주세요.");
+				System.out.println();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

@@ -23,7 +23,7 @@ public class Lotto {
 
 	private int[] createNums(int[] nums) {
 		int[] temp = new int[nums.length];
-		int autoStart = 0;
+		int autoStart = temp.length;
 		for (int i = 0; i < temp.length; i++) {
 			if(nums[i]==0) {
 				autoStart = i;

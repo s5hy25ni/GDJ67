@@ -90,11 +90,18 @@ public class Method {
 				+ "Gee, gee, gee, gee, baby, baby, baby\r\n"
 				+ "Gee, gee, gee, gee, be-be-be, be-be-be";
 		
-		String target = "Uh";
+		search.nextSearch(text,"Gee", true); // 1번 클릭
+		search.nextSearch(text,"Gee", true); // 2번 클릭
+		search.nextSearch(text,"Gee", true); // 3번 클릭
+		search.nextSearch(text,"Gee", true); // 4번 클릭
+		search.nextSearch(text,"Gee", true); // 5번 클릭
 		
-		search.nextSearch(text,target);
-		search.nextSearch(text, target);
-		
+		System.out.println();
+		System.out.println();
+		search.allSearch(text, "gee", true);
+		System.out.println();
+		System.out.println();
+
 		
 		
 		
