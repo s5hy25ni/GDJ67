@@ -56,8 +56,8 @@ public class Object_Main {
 		Object ud01_two = ud01; // upcasting
 		Object ud02_two = ud02; // upcasting
 		
-		UserDefineClass ud01_two_c = (UserDefineClass)ud01_two; // true
-		UserDefineClass ud02_two_c = (UserDefineClass)ud02_two; // true
+		UserDefineClass ud01_two_c = (UserDefineClass)ud02_two; // true
+		UserDefineClass ud02_two_c = (UserDefineClass)ud01_two; // true
 		
 		try {
 			com.min.edu.gd67.UserDefineClass ud01_tow_tt = (com.min.edu.gd67.UserDefineClass)ud01_two;

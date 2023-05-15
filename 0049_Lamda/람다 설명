@@ -1,0 +1,19 @@
+Java8에서 표현식을 사용하여 메소드를 간결하게 하는 방법 제공
+javascript : arrow function
+
+람다식의 구성
+
+argument list, arrow operation(->), {} 세 부분으로 구성 된다.
+
+
+(ex) 두 개의 arguments를 입력 받아 합을 구하는 메소드 작성
+
+public int sum(int x, int y) {
+	return x+y;
+}
+
+1) 기본적인 작성법
+(int x, int y) -> {return x+y;};
+
+2) 컴파일러가 유형을 자동으로 결정 할 수 있기 때문에 일반적으로 매개변수 유형을 지정할 필요 X
+(x, y) -> x+y;
