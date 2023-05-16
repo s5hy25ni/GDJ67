@@ -6,10 +6,10 @@ import java.util.List;
 public class CardCase {
 	
 	private static CardCase cardcase;
-	private List<CardOne> cardBundle;
+	private List<CardOne> cards;
 	
-	public CardCase() {
-		cardBundle = new ArrayList<CardOne>();
+	private CardCase() {
+		cards = new ArrayList<CardOne>();
 		make();
 	}
 	
@@ -24,8 +24,8 @@ public class CardCase {
 		int cnt = 0;
 		while(true) {
 			CardOne card = new CardOne();
-			if(!cardBundle.contains(card)) {
-				cardBundle.add(card);
+			if(!cards.contains(card)) {
+				cards.add(card);
 				cnt++;
 			}
 			if(cnt==CardOne.SHAPE.length*CardOne.NUMBER.length) {
@@ -34,8 +34,9 @@ public class CardCase {
 		}
 	}
 	
-	public List<CardOne> getCardBundle() {
-		return cardBundle;
+	// 테스트 후 삭제
+	public List<CardOne> getCards() {
+		return cards;
 	}
 	
 }
