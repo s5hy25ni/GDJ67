@@ -20,7 +20,7 @@ public class CardCase {
 				cardcase.add(card);
 				cnt++;
 			}
-			if(cnt==CardOne.NUMBER.length*CardOne.SHAPE.length) {
+			if(cnt==CardOne.Number.values().length*CardOne.Shape.values().length) {
 				break;
 			}
 		}

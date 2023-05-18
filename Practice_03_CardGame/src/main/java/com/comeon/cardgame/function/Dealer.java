@@ -1,6 +1,6 @@
 package com.comeon.cardgame.function;
 
-public class RoomControl {
+public class Dealer {
 
 	public String modeToStr(int modeInt) {
 		String modeStr = switch (modeInt) {
