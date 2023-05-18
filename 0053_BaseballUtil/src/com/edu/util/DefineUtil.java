@@ -18,11 +18,11 @@ public class DefineUtil {
 	 * @return int 범위의 값
 	 */
 	@SuppressWarnings("resource")
-	public static int getNum() {
+	public static int getNum(String req) {
 		int n = 0;
 		while (true) {
 			try {
-				System.out.println("정수만 입력해 주세요.");
+				System.out.println(req);
 				Scanner scan = new Scanner(System.in);
 				n = scan.nextInt();
 				break;
