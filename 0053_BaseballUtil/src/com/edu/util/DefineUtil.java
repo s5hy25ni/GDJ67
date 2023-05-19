@@ -60,5 +60,21 @@ public class DefineUtil {
 		// -> 공백 체크
 		return str.strip();
 	}
+	
+	@SuppressWarnings("resource")
+	public static String getAnswer(String msg) {
+		String answer = "";
+		while(true) {
+			Scanner scan = new Scanner(System.in);
+			System.out.println(msg);
+			answer =scan.nextLine().strip(); 
+			
+			if(answer.compareToIgnoreCase("y")==0 ||
+					answer.compareToIgnoreCase("n")==0){
+				break;
+			}
+		}
+		return answer;
+	}
 
 }
