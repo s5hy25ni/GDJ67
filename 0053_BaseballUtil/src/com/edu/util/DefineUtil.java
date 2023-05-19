@@ -18,11 +18,11 @@ public class DefineUtil {
 	 * @return int 범위의 값
 	 */
 	@SuppressWarnings("resource")
-	public static int getNum() {
+	public static int getNum(String req) {
 		int n = 0;
 		while (true) {
 			try {
-				System.out.println("정수만 입력해 주세요.");
+				System.out.println(req);
 				Scanner scan = new Scanner(System.in);
 				n = scan.nextInt();
 				break;
@@ -59,6 +59,22 @@ public class DefineUtil {
 		
 		// -> 공백 체크
 		return str.strip();
+	}
+	
+	@SuppressWarnings("resource")
+	public static String getAnswer(String msg) {
+		String answer = "";
+		while(true) {
+			Scanner scan = new Scanner(System.in);
+			System.out.println(msg);
+			answer =scan.nextLine().strip(); 
+			
+			if(answer.compareToIgnoreCase("y")==0 ||
+					answer.compareToIgnoreCase("n")==0){
+				break;
+			}
+		}
+		return answer;
 	}
 
 }

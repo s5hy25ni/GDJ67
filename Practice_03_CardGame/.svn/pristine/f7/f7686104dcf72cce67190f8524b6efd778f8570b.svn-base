@@ -1,5 +1,5 @@
 package com.comeon.cardgame.function;
-import com.comeon.cardgame.tool.Player;
+
 import com.comeon.cardgame.tool.Room;
 
 public class Dealer {
@@ -31,13 +31,4 @@ public class Dealer {
 		};
 		return strMode;
 	}
-	
-	public void addUser(Player player) {
-		room.getPlayers().add(player);
-	}
-
-	public Room getRoom() {
-		return room;
-	}
-
 }
