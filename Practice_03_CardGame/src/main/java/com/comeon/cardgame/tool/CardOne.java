@@ -1,7 +1,5 @@
 package com.comeon.cardgame.tool;
 
-import java.util.Objects;
-
 public class CardOne {
 
 	private String one;
@@ -13,6 +11,9 @@ public class CardOne {
 		public String value;
 		private Shape(String s) {
 			value  = s;
+		}
+		public String getValue() {
+			return value;
 		}
 	}
 	
@@ -26,7 +27,7 @@ public class CardOne {
 		}
 	}
 
-	public CardOne() {
+	CardOne() {
 		Shape[] shape = Shape.values();
 		Number[] number = Number.values();
 		int s = (int)(Math.random()*shape.length);
@@ -35,24 +36,8 @@ public class CardOne {
 		one = shape[s].value+number[n].value;
 	}
 
-	public String getOne() {
+	String getOne() {
 		return one;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(one);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		boolean isc = false;
-		CardOne other = (CardOne) obj;
-		if(one.equals(other.getOne())) {
-			isc = true;
-		}
-		
-		return isc;
 	}
 
 }

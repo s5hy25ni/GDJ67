@@ -5,10 +5,10 @@ import java.util.List;
 
 public class CardCase {
 
-	private List<CardOne> cardcase;
+	private List<String> cardcase;
 	
 	public CardCase() {
-		cardcase = new ArrayList<CardOne>();
+		cardcase = new ArrayList<String>();
 		make();
 	}
 	
@@ -16,8 +16,8 @@ public class CardCase {
 		int cnt = 0;
 		while(true) {
 			CardOne card = new CardOne();
-			if(!cardcase.contains(card)) {
-				cardcase.add(card);
+			if(!cardcase.contains(card.getOne())) {
+				cardcase.add(card.getOne());
 				cnt++;
 			}
 
@@ -27,7 +27,7 @@ public class CardCase {
 		}
 	}
 
-	public List<CardOne> getCardcase() {
+	public List<String> getCardcase() {
 		return cardcase;
 	}
 

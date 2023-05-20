@@ -13,9 +13,6 @@ public class Test {
 //		System.out.println(room1);
 //		System.out.println(room2);
 //		System.out.println(room3);
-		
-		CardOne one = new CardOne();
-		System.out.println(one.getOne());
 	}
 
 }
