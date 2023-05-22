@@ -1,18 +1,24 @@
 package com.comeon.cardgame.tool;
 
-import java.util.Objects;
-
 public class CardOne {
 
 	private String one;
 	
+<<<<<<< HEAD:Badugi/Badugi/src/main/java/com/comeon/cardgame/tool/CardOne.java
 	public enum Shape {
 		
+=======
+	public static enum Shape {
+
+>>>>>>> 56ef6618ae6059138ff4b2ffbffabb30d1f38d20:Practice_03_CardGame/src/main/java/com/comeon/cardgame/tool/CardOne.java
 		CLOVER("♣"), HEART("♥"), DIAMOND("◆"), SPACE("♠");
 		
 		public String value;
 		private Shape(String s) {
 			value  = s;
+		}
+		public String getValue() {
+			return value;
 		}
 	}
 	
@@ -25,8 +31,8 @@ public class CardOne {
 			value  = n;
 		}
 	}
-	
-	public CardOne() {
+
+	CardOne() {
 		Shape[] shape = Shape.values();
 		Number[] number = Number.values();
 		int s = (int)(Math.random()*shape.length);
@@ -35,7 +41,7 @@ public class CardOne {
 		one = shape[s].value+number[n].value;
 	}
 
-	public String getOne() {
+	String getOne() {
 		return one;
 	}
 

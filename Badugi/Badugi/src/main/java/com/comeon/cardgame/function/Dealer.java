@@ -1,5 +1,4 @@
 package com.comeon.cardgame.function;
-
 import com.comeon.cardgame.tool.Player;
 import com.comeon.cardgame.tool.Room;
 

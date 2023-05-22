@@ -119,8 +119,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="com.comeon.cardgame.function.RoomControl" project="Practice_03_CardGame" 
-    file="/Practice_03_CardGame/src/main/java/com/comeon/cardgame/function/RoomControl.java" binary="false" 
+  <class id="13" language="java" name="com.comeon.cardgame.function.Dealer" project="Practice_03_CardGame" 
+    file="/Practice_03_CardGame/src/main/java/com/comeon/cardgame/function/Dealer.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="697" y="155"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -139,6 +139,16 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
+<<<<<<< HEAD
+  <association id="15">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="16" name="cardcase">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="17" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+=======
   <dependency id="15">    
     <end type="SOURCE" refId="9"/>    
     <end type="TARGET" refId="11"/>  
@@ -151,10 +161,23 @@
     <end type="SOURCE" refId="8" navigable="false">      
       <attribute id="18" name="myCard"/>      
       <multiplicity id="19" minimum="0" maximum="2147483647"/>    
+>>>>>>> 0ad468095c728e85eb6a4f918b51621066455270
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+<<<<<<< HEAD
+  <generalization id="18">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <association id="19">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="20" name="players">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="21" minimum="0" maximum="2147483647">        
+=======
   <generalization id="20">    
     <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="7"/>  
@@ -165,12 +188,41 @@
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="23" minimum="0" maximum="1">        
+>>>>>>> 0ad468095c728e85eb6a4f918b51621066455270
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
+    <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+<<<<<<< HEAD
+  <generalization id="22">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <generalization id="23">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <realization id="24">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="4"/>  
+  </realization>  
+  <dependency id="25">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <dependency id="26">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <association id="27">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="28" name="cards">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="29" minimum="0" maximum="1">        
+=======
   <generalization id="24">    
     <end type="SOURCE" refId="14"/>    
     <end type="TARGET" refId="7"/>  
@@ -185,10 +237,11 @@
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="28" minimum="0" maximum="2147483647">        
+>>>>>>> 0ad468095c728e85eb6a4f918b51621066455270
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
+    <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="29">    
