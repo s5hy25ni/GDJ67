@@ -14,65 +14,48 @@ import com.comeon.cardgame.tool.CardOne;
 import com.comeon.cardgame.tool.Player;
 
 public class CompareImpl implements ICompare {
-
+	
 	List<Player> players;
-//	Map<Integer, Map<String, List<Integer>>> valueSize;
-	// idx value get(0)==shapeSize, get(1)==numberSize
+	Map<Integer, Map<String, List<Integer>>> valueSize;
+	//				idx						value			get(0)==shapeSize, get(1)==numberSize
 	Set<String> validValue = new HashSet<String>();
 	Set<Integer> cutIdx = new HashSet<Integer>();
-
+	
 	public CompareImpl(List<Player> players) {
 		this.players = players;
 	}
-
-	CardOne[] bubbleSort(CardOne[] from) {
-		int len = from.length;
-		CardOne[] to = from.clone();
-		CardOne temp;
-		
-		for (int i = 0; i < len; i++) {
-			for (int j = 0; j < len - 1; j++) {
-				if (to[i].getSize() > to[j].getSize()) {
-					temp = to[i];
-					to[i] = to[j];
-					to[i] = to[j];
-				}
-			}
-		}
-		return to;
-	}
-
 	// enum에 getSize 추가,,,?
-//	int getSize(int type, String cardValue) {
-//		int size;
-//		if(type==0) {
-//			size = Stream.of(CardOne.Shape.values())
-////					.filter(s->s.value.equals(cardValue))
-//					.map(s->s.ordinal())
-//					.collect(Collectors.toList()).get(0);			
-//		} else {			
-////			size = Stream.of(CardOne.Number.values())
-//					.filter(s->s.value.equals(cardValue))
-//					.map(s->s.ordinal())
-//					.collect(Collectors.toList()).get(0);			
-//		}				
-//		return size+1;
-//	}
-
+	int getSize(int type, String cardValue) {
+		int size;
+		if(type==0) {
+			size = Stream.of(CardOne.Shape.values())
+					.filter(s->s.value.equals(cardValue))
+					.map(s->s.ordinal())
+					.collect(Collectors.toList()).get(0);			
+		} else {			
+			size = Stream.of(CardOne.Number.values())
+					.filter(s->s.value.equals(cardValue))
+					.map(s->s.ordinal())
+					.collect(Collectors.toList()).get(0);			
+		}				
+		return size+1;
+	}
+	
 //	public void separateCard(String[] pCards) {
 //		for (int i = 0; i < pCards.length; i++) {
 //			shapeValue[i] = pCards[i].substring(0, 1);
 //			numberValue[i] = pCards[i].substring(1);
 //		}
 //	}
-
+	
+	
 //	public String makeJokboTop(String[] pCards) {
 //		String top = " 탑";
 //		
 //		
 //		return top;
 //	}
-
+	
 //	public String makeJokboName(String[] pCards) {
 //	
 //		findValidValue(pCards);
@@ -100,7 +83,7 @@ public class CompareImpl implements ICompare {
 //			return madeName(pCards);
 //		}
 //	}
-
+	
 //	public String madeName() {
 //		Set<String> temp = new HashSet<String>(validValue);
 //		Iterator<String> temp2  = temp.iterator();
@@ -123,7 +106,7 @@ public class CompareImpl implements ICompare {
 //			return "메이드";
 //		}
 //	}
-
+	
 //	public void cutOrValidNull() {
 //			if(validValue.size()==ICompare.CARDNUM) {
 //				cutIdx.add(ICompare.CARDNUM);
@@ -160,5 +143,25 @@ public class CompareImpl implements ICompare {
 // 		return to;
 //	}
 //	
+//	String[][] bubbleSort(String[] from) {
+//		int len = from.length;
+//		String[][] to = separateCard(from);
+//		String[][] temp = new String[len][2];
+//		
+//		for (int i = 0; i < len; i++) {
+//			for (int j =0; j < len-1; j++) {
+//				if(getSize(1, to[j][1]) > getSize(1, to[j+1][1])
+//						|| (getSize(1, to[j][1])==getSize(1, to[j+1][1])
+//								&& getSize(0, to[j][0]) > getSize(0, to[j+1][0]))){
+//					temp[j] = to[j];
+//					to[j] = to[j+1];
+//					to[j+1] = temp[j];
+//				} 
+//			}
+//		}		
+//		return to;
+//	}
+	
+		
 
 }

@@ -3,10 +3,14 @@ package com.comeon.cardgame.tool;
 public class CardOne {
 
 	private String one;
-	private int size;
-
+	
+<<<<<<< HEAD:Badugi/Badugi/src/main/java/com/comeon/cardgame/tool/CardOne.java
+	public enum Shape {
+		
+=======
 	public static enum Shape {
 
+>>>>>>> 56ef6618ae6059138ff4b2ffbffabb30d1f38d20:Practice_03_CardGame/src/main/java/com/comeon/cardgame/tool/CardOne.java
 		CLOVER("♣"), HEART("♥"), DIAMOND("◆"), SPACE("♠");
 		
 		public String value;
@@ -35,16 +39,10 @@ public class CardOne {
 		int n = (int)(Math.random()*number.length);
 		
 		one = shape[s].value+number[n].value;
-		size = shape[s].ordinal()+(number[n].ordinal()+1)*10;
 	}
 
 	String getOne() {
 		return one;
 	}
 
-	public int getSize() {
-		return size;
-	}
-
-	
 }

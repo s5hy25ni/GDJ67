@@ -31,7 +31,7 @@ public class CompareImplTest {
 			players.add(new Player());
 			players.get(i).setMyCard(cards[i]);
 		}
-		
+
 		CompareImpl ci = new CompareImpl(players);
 		
 		//TODO TEST_SH_001 setting

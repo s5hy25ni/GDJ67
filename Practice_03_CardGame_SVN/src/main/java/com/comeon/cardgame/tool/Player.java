@@ -1,6 +1,8 @@
 package com.comeon.cardgame.tool;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Player {
 
@@ -10,6 +12,7 @@ public class Player {
 	private int money;
 	private String[] myCard;
 	private String jokbo;
+	private Set<Integer> cutIdx;
 	
 	public Player() {
 		this("computer_"+(comCnt++));
@@ -22,6 +25,7 @@ public class Player {
 		money = 1000000000;
 		myCard = new String[4];
 		jokbo = "";
+		cutIdx = new HashSet<Integer>();
 	}
 
 	public int[] getCutCnt() {
@@ -58,6 +62,14 @@ public class Player {
 
 	public String getName() {
 		return name;
+	}
+	
+	public Set<Integer> getCutIdx() {
+		return cutIdx;
+	}
+
+	public void setCutIdx(Set<Integer> cutIdx) {
+		this.cutIdx = cutIdx;
 	}
 
 	@Override

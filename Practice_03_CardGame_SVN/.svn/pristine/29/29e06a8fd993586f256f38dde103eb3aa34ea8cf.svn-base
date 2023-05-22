@@ -35,7 +35,7 @@ public class CardOne {
 		int n = (int)(Math.random()*number.length);
 		
 		one = shape[s].value+number[n].value;
-		size = shape[s].ordinal()+(number[n].ordinal()+1)*10;
+		size = shape[s].ordinal()+number[n].ordinal();
 	}
 
 	String getOne() {
