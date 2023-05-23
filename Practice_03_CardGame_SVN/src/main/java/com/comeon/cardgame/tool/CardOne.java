@@ -1,44 +1,38 @@
 package com.comeon.cardgame.tool;
 
+import java.util.Objects;
+
 public class CardOne {
 
 	private String one;
 	private int size;
-
-	public static enum Shape {
-
-		CLOVER("♣"), HEART("♥"), DIAMOND("◆"), SPACE("♠");
-		
-		public String value;
-		private Shape(String s) {
-			value  = s;
-		}
-		public String getValue() {
-			return value;
-		}
-	}
 	
-	public enum Number {
-		
-		A("A"), TWO("2"), THREE("3"), FOUR("4"), FIVE("5"), SIX("6"), SEVEN("7"), EIGHT("8"), NINE("9"), TEN("10"), J("J"), Q("Q"), K("K");
-		
-		public String value;
-		private Number(String n) {
-			value  = n;
-		}
-	}
+	public static String[] shape = { "♣", "♥", "◆", "♠"};
+	public static String[] number = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
 
 	CardOne() {
-		Shape[] shape = Shape.values();
-		Number[] number = Number.values();
 		int s = (int)(Math.random()*shape.length);
 		int n = (int)(Math.random()*number.length);
 		
-		one = shape[s].value+number[n].value;
-		size = shape[s].ordinal()+(number[n].ordinal()+1)*10;
+		one = shape[s]+number[n];
+		size = s + (n+1)*10;
 	}
 
-	String getOne() {
+	public CardOne(String value) {
+		this.one = value;
+		for (int i = 0; i < shape.length; i++) {
+			if(shape[i].equals(value.substring(0,1))) {
+				this.size += i;
+			}
+		}
+		for (int i = 0; i < number.length; i++) {
+			if(number[i].equals(value.substring(1))){
+				this.size += (i+1)*10;
+			}
+		}
+	}
+	
+	public String getOne() {
 		return one;
 	}
 
@@ -46,5 +40,26 @@ public class CardOne {
 		return size;
 	}
 
+	public void setOne(String one) {
+		this.one = one;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(one, size);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		boolean isc = false;
+		CardOne other = (CardOne) obj;
+		if(one.equals(other.getOne())) {
+			isc = true;
+		}
+		
+		return isc;
+	}
+	
+	
 	
 }

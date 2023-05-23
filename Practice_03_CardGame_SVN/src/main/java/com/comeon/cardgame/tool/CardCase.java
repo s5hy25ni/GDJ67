@@ -21,7 +21,7 @@ public class CardCase {
 				cnt++;
 			}
 
-			if(cnt==CardOne.Shape.values().length*CardOne.Number.values().length) {
+			if(cnt==CardOne.shape.length*CardOne.number.length) {
 				break;
 			}
 		}

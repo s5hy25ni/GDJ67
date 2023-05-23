@@ -4,11 +4,11 @@ import com.comeon.cardgame.tool.Room;
 
 public class Dealer {
 	
-	private static Dealer dealer;	
-	private Room room;
+	private static Dealer dealer;
+	private int comCnt;
 	
 	private Dealer() {
-		
+		comCnt = 0;
 	}
 	
 	public static Dealer getInstance() {
@@ -18,9 +18,9 @@ public class Dealer {
 		return dealer;
 	}
 	
-	public void createRoom(int intMode) {
+	public Room createRoom(int intMode) {
 		String strMode = modeToStr(intMode);
-		room = new Room(strMode);
+		return new Room(strMode);
 	}
 
 	private String modeToStr(int intMode) {
@@ -31,13 +31,35 @@ public class Dealer {
 		};
 		return strMode;
 	}
-	
-	public void addUser(Player player) {
-		room.getPlayers().add(player);
+		
+	public void addUser() {
+		addUser(2);
 	}
-
-	public Room getRoom() {
-		return room;
+	
+	public void addUser(int number) {
+		for (int i = 0; i < number-1; i++) {
+			addUser("computer_"+(++comCnt));			
+		}
+	}
+	
+	public void addUser(String name) {
+		Player player = new Player(name);
+		Game.room.getPlayers().add(player);
+	}
+	
+	public CompareImpl createCompare(int mode) {
+		CompareImpl compare = switch (mode) {
+		case 1 ->new CompareLow();
+		case 2 ->new CompareHigh();
+		default ->new CompareReverse();
+		};
+		
+		return compare;
+	}
+	
+	public void clear() {
+		comCnt = 0;
+		Game.room.getPlayers().subList(1, Game.room.getPlayers().size()-1).clear();
 	}
 
 }
