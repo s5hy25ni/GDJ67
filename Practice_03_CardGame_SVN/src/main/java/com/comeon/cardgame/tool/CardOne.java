@@ -59,6 +59,11 @@ public class CardOne {
 		
 		return isc;
 	}
+
+	@Override
+	public String toString() {
+		return one;
+	}
 	
 	
 	

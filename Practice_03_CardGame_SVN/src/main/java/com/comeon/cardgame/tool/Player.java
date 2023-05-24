@@ -12,6 +12,8 @@ public class Player {
 	private CardOne[] myCard;
 	private String jokbo;
 	private Set<Integer> changeIdx;
+	private boolean isDie;
+	private boolean isCom = false;
 	
 	public Player(String name) {
 		this.name = name;
@@ -21,8 +23,13 @@ public class Player {
 		myCard = new CardOne[4];
 		jokbo = "";
 		changeIdx = new HashSet<Integer>();
+		isDie = false;
 	}
 
+	public String getName() {
+		return name;
+	}
+	
 	public int[] getChangeCnt() {
 		return changeCnt;
 	}
@@ -55,10 +62,6 @@ public class Player {
 		this.jokbo = jokbo;
 	}
 
-	public String getName() {
-		return name;
-	}
-	
 	public Set<Integer> getChangeIdx() {
 		return changeIdx;
 	}
@@ -67,12 +70,20 @@ public class Player {
 		this.changeIdx = changeIdx;
 	}
 
-	@Override
-	public String toString() {
-		return "Player [name=" + name + ", changeCnt=" + Arrays.toString(changeCnt) + ", money=" + money + ", myCard="
-				+ Arrays.toString(myCard) + ", jokbo=" + jokbo + "]";
+	public boolean getIsDie() {
+		return isDie;
 	}
-	
-	
+
+	public void setIsDie(boolean isDie) {
+		this.isDie = isDie;
+	}
+
+	public boolean isCom() {
+		return isCom;
+	}
+
+	public void setCom(boolean isCom) {
+		this.isCom = isCom;
+	}
 
 }

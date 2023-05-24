@@ -49,9 +49,9 @@ public class Dealer {
 	
 	public CompareImpl createCompare(int mode) {
 		CompareImpl compare = switch (mode) {
-		case 1 ->new CompareLow();
-		case 2 ->new CompareHigh();
-		default ->new CompareReverse();
+		case 1 ->CompareLow.getInstance();
+		case 2 ->CompareHigh.getInstance();
+		default ->CompareReverse.getInstance();
 		};
 		
 		return compare;

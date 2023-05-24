@@ -1,17 +1,7 @@
 package com.comeon.cardgame.function;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
 import org.junit.Test;
-
-import com.comeon.cardgame.tool.CardCase;
 import com.comeon.cardgame.tool.CardOne;
 import com.comeon.cardgame.tool.Player;
 
@@ -37,15 +27,18 @@ public class CompareImplTest {
 //		}
 		
 		// 2. myCard 생성
-		CardOne[] myCard = {new CardOne("◆3"), new CardOne("♥2"), new CardOne("♠A"), new CardOne("♣4") };
+//		CardOne[] myCard = {new CardOne("◆3"), new CardOne("♥2"), new CardOne("♠A"), new CardOne("♣4") };
 		
 		// 3. 유저 리스트 생성 및 myCard 세팅
-		List<Player> players = new ArrayList<Player>();
-		players.add(new Player("유저"));
-		players.get(0).setMyCard(myCard);
+//		List<Player> players = new ArrayList<Player>();
+//		Dealer dealer = Dealer.getInstance();
+//		Game.room = dealer.createRoom(1);
+//		List<Player> players = Game.room.getPlayers();
+//		dealer.addUser("유저");
+//		dealer.addUser();
 
 		// 4. test class 생성
-		CompareImpl ci = new CompareImpl();
+//		CompareImpl ci = new CompareImpl();
 
 		//TODO SH002 bubbleSort()
 //		ci.bubbleSort(players.get(0));
@@ -171,7 +164,7 @@ public class CompareImplTest {
 //		String jokbo9 = ci.jokbo;
 //		assertEquals("투베이스 탑10", jokbo9);
 //		// 투베이스 탑10_무늬 
-//		CardOne[] card10 = { new CardOne("♣2"), new CardOne("♣5"), new CardOne("♣6"), new CardOne("♥10") };
+//		CardOne[] card10 = { new CardOne("♣2"), new CardOne("♣5"), new CardOne("♣6"), new CardOne("♥10")};
 //		ci.separateCard(card10); 
 //		ci.findValidValue(card10);
 //		ci. makeJokboName(card10); 
@@ -192,6 +185,48 @@ public class CompareImplTest {
 //		String jokbo12 = ci.jokbo;
 //		assertEquals("무탑6", jokbo12);
 		
+		//TODO SH006 makeJokboAndChange()
+		
+		CardOne[][] card = new CardOne[][]{
+			{new CardOne("♠A"), new CardOne("♥2"), new CardOne("◆3"), new CardOne("♣4")}, // 1
+			{ new CardOne("♠6"), new CardOne("♣10"), new CardOne("♥10"), new CardOne("♠10")}, // 9
+			{ new CardOne("♥A"), new CardOne("♠2"), new CardOne("♣3"), new CardOne("◆5")}, // 2
+			{ new CardOne("♣2"), new CardOne("♣5"), new CardOne("♣6"), new CardOne("♥10")}, // 10
+			{ new CardOne("♣2"), new CardOne("♣6"), new CardOne("♥8"), new CardOne("♥10")}, // 8
+			{ new CardOne("♠6"), new CardOne("♣9"), new CardOne("◆10"), new CardOne("♥K")}, // 4
+			{ new CardOne("♠A"), new CardOne("♥2"), new CardOne("♠5"), new CardOne("♣7")}, // 5
+			{ new CardOne("♠6"), new CardOne("◆10"), new CardOne("♣K"), new CardOne("♥K")}, // 6
+			{ new CardOne("♣6"), new CardOne("♣8"), new CardOne("♣9"), new CardOne("♣J")}, // 12
+			{ new CardOne("♥4"), new CardOne("♠6"), new CardOne("♠10"), new CardOne("♣K")}, // 7
+			{ new CardOne("♣9"), new CardOne("♥9"), new CardOne("◆9"), new CardOne("♠9")}, // 11
+			{ new CardOne("♠A"), new CardOne("♣2"), new CardOne("◆4"), new CardOne("♥5")} // 3
+		};
+		
+		Dealer dealer = Dealer.getInstance();
+		Game.room = dealer.createRoom(1);
+		List<Player> players = Game.room.getPlayers();
+		dealer.addUser("유저");
+		for (int i = 0; i < 11; i++) {
+			dealer.addUser();			
+		}
+		for(int i = 0; i<12; i++) {
+			players.get(i).setMyCard(card[i]);
+		}
+		
+		CompareImpl ci = dealer.createCompare(1);
+		
+		ci.makeJokboAndChange();
+		
+		//TODO SH007 calScore()
+//		for (Player player : players) {
+//			System.out.println(player.getJokbo() + " : "+ ci.calScore(player));
+//		}
+		
+		//TODO SH008 comparePlayers()
+		ci.comparePlayers();
+		for (Player player : Game.room.getRanking()) {
+			System.out.println(player.getName() + " : "+player.getJokbo());
+		}
 	}
 
 }

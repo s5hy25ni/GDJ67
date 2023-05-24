@@ -9,6 +9,8 @@ public class Room {
 	private List<Player> players;
 	private int seed;
 	private int boss;
+	private Player[] ranking;
+	private int dieCnt;
 	
 	public Room(String mode) {
 		this.mode = mode;
@@ -16,6 +18,15 @@ public class Room {
 		players = new ArrayList<Player>();
 		seed = 0;
 		boss = -1;
+		dieCnt = 0;
+	}
+	
+	public String getMode() {
+		return mode;
+	}
+	
+	public CardCase getCards() {
+		return cards;
 	}
 
 	public List<Player> getPlayers() {
@@ -38,18 +49,20 @@ public class Room {
 		this.boss = boss;
 	}
 
-	public String getMode() {
-		return mode;
+	public Player[] getRanking() {
+		return ranking;
 	}
 
-	public CardCase getCards() {
-		return cards;
+	public void setRanking(Player[] ranking) {
+		this.ranking = ranking;
 	}
 
-	//TODO 001 toString()
-	@Override
-	public String toString() {
-		return "mode=" + mode + ",cards=" + cards.getCardcase().size() + ", players=" + players + ",seed=" + seed + ", boss=" + boss;
+	public int isDieCnt() {
+		return dieCnt;
+	}
+
+	public void setDieCnt(int dieCnt) {
+		this.dieCnt = dieCnt;
 	}
 	
 }
